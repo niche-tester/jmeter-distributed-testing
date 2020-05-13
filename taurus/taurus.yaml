@@ -1,0 +1,47 @@
+execution:
+- distributed:
+  - 10.0.1.4
+  scenario:
+    script : TestScript.jmx
+  concurrency : 10
+  ramp-up : 50s
+  hold-for : 60s
+  loop : forever
+- distributed:
+  - 10.0.1.6
+  scenario:
+    script : TestScript.jmx
+  concurrency : 10
+  ramp-up : 50s
+  hold-for : 60s
+  loop : forever
+- distributed:
+  - 10.0.1.7
+  scenario:
+    script : TestScript.jmx
+  concurrency : 10
+  ramp-up : 50s
+  hold-for : 60s
+  loop : forever
+- distributed:
+  - 10.0.1.8
+  scenario:
+    script : TestScript.jmx
+  concurrency : 10
+  ramp-up : 50s
+  hold-for : 60s
+  loop : forever
+reporting:
+- module: console
+- module: final-stats
+  summary: true
+  percentiles: true
+  failed-labels: false
+  test-duration: true
+  dump-csv: TaurusResults/test-results.csv
+- module: blazemeter
+  report-name: Report-Name
+  test: TestScriptName
+  project: ProjectName
+- module: jmeter
+  memory-xmx: 4G  # allow JMeter to use up to 4G of memory
